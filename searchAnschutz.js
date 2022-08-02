@@ -434,7 +434,7 @@ function modify(seq) {
             thisScore += 0;
         }
         
-        motifs = motifs + thisMotif + ' ' + thisScore + '\<br>';
+        motifs = motifs + thisMotif + ' (' + thisScore +  ')' + '\<br>';
       }
     }
 
