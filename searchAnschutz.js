@@ -23,7 +23,11 @@ function modify(seq) {
 
 
   function search(proteins) {
-    var motifs = ''
+    //var motifs = ''
+    var motifs = 'Motif, Position, Score \<br>'
+    var scores = []
+    var key_value = [];
+    //key_value = {};
 
     console.log(proteins)
 
@@ -434,9 +438,27 @@ function modify(seq) {
             thisScore += 0;
         }
         
-        motifs = motifs + thisMotif + ' (' + thisScore +  ')' + '\<br>';
-      }
-    }
+        motifs = motifs + thisMotif + ', ' + i + ', ' + thisScore + '\<br>';
 
-    return motifs
-  }
+        
+        //var cont = true;
+        //while (cont == true){
+        //  for (let i=0; i<key_value.length; i++){
+        //    if (key_value[i][1] < thisScore){
+        //      cont = false;
+        //    };
+        //  };
+        //  cont = false;
+        //};
+
+        //key_value.splice(0,0,[thisMotif, thisScore]);
+        
+        
+      };
+    };
+
+    //console.log(key_value);
+    //key_value.sort()
+
+    return motifs;
+  };
