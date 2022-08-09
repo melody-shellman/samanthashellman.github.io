@@ -437,8 +437,10 @@ function modify(seq) {
           default:
             thisScore += 0;
         }
+
+        realIndex = i + 1
         
-        motifs = motifs + thisMotif + ', ' + i + ', ' + thisScore + '\<br>';
+        motifs = motifs + thisMotif + ', ' + realIndex + ', ' + thisScore + '\<br>';
 
         
         //var cont = true;
