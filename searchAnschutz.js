@@ -5,7 +5,13 @@ function findMotifs() {
     cleanedSeq = modify(sequence)
     results = search(cleanedSeq)
     document.getElementById("test").innerHTML = results;
-  }
+}
+
+
+function clearText() {
+  document.getElementById("test").innerHTML = '';
+  document.getElementById("proteins").value = '';
+}
 
 
 function modify(seq) {
