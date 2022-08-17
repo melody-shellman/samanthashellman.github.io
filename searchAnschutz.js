@@ -1,6 +1,12 @@
 
+
+localStorage.setItem("counter", "24");
+
+
 // called when "Find Motifs!" on anschutz tab button is pressed
 function findMotifs() {
+  localStorage.setItem("counter", "26");
+  console.log("26")
   var sequence = document.getElementById("proteins").value;
   cleanedSeq = modify(sequence)
   results = search(cleanedSeq)
@@ -31,6 +37,68 @@ function clearText2() {
   document.getElementById("8proteins").value = '';
 }
 
+// called when extended search button is clicked
+function extendedSearch(){
+  seq = document.getElementById("extended").value
+  proteins = modify(seq)
+
+
+  var motifs = 'Motif, &emsp; Position\<br>'
+
+  for (var i = 0, _pj_a = proteins.length-6; i < _pj_a; i += 1) {
+
+    if (i == proteins.length - 8){
+      //last seven
+
+      if (proteins[i] == 'R' && (proteins[i+6] == 'G' || proteins[i+7] == 'G')){
+
+        thisMotif = proteins.substring(i, i+8);
+  
+        realIndex = i + 1
+        
+        motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+  
+      };
+
+    }
+
+    else if (i == proteins.length - 7){
+      // last six
+
+      if (proteins[i] == 'R' && proteins[i+6] == 'G'){
+
+        thisMotif = proteins.substring(i, i+7);
+  
+        realIndex = i + 1
+        
+        motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+  
+      };
+    }
+
+    // if a motif is found
+    else if (proteins[i] == 'R' && (proteins[i+6] == 'G' || proteins[i+7] == 'G' || proteins[i+8] == 'G')){
+
+      thisMotif = proteins.substring(i, i+9);
+
+      realIndex = i + 1
+      
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+
+    };
+
+  };
+
+  document.getElementById("extendedOutput").innerHTML = motifs;
+
+}
+
+// clears extended search output
+function clearText3() {
+  document.getElementById("extended").value = '';
+  document.getElementById("extendedOutput").innerHTML = '';
+}
+
 // remove new line characters
 function modify(seq) {
     var new_seq;
@@ -45,12 +113,12 @@ function modify(seq) {
     return new_seq;
 }
 
-
+// find and score main motifs
 function search(proteins) {
   //var motifs = ''
   var motifs = 'Motif, &emsp; Position, &emsp; Score \<br>'
-  var scores = []
-  var key_value = [];
+  // var scores = []
+  // var key_value = [];
   //key_value = {};
 
   console.log(proteins)

@@ -12,8 +12,19 @@
 </div>
 
 <h1>Motif Search Project</h1>
-<h2>Use this specifically for tankyrase motif rules (written below)!</h2>
-<p>Input protein sequence below:</p>
+<h2>Use this specifically for tankyrase motif rules</h2>
+
+<!--
+<h3 id="countDisplay">
+    This tool has been used: 
+      <script type="text/javascript">
+        document.write(localStorage.getItem("counter"))
+      </script>
+    times!
+</h3>
+-->
+
+<p>Input amino acid sequence below:</p>
 <textarea id="proteins" name="proteins" rows="6" cols="100"></textarea> <br> <br>
 <button type="submit" onclick="findMotifs()">Find Motifs!</button>
 <button type="submit" onclick="clearText()">Clear</button>
@@ -28,6 +39,15 @@
 <button type="submit" onclick="clearText2()">Clear</button>
 
 <p id="score"></p>
+
+<br> <br> 
+
+<h4>Extended search function - find motifs with 5, 6, or 7 amino acids separating R and G</h3>
+<p>Input amino acid sequence below:</p>
+<textarea id="extended" name="extended" rows="6" cols="100"></textarea> <br> <br>
+<button type="submit" onclick="extendedSearch()">Find extended motifs!</button>
+<button type="submit" onclick="clearText3()">Clear</button>
+<p id="extendedOutput"></p>
 
 <br> <br> <br> <br>
 
