@@ -3,7 +3,7 @@
 localStorage.setItem("counter", "24");
 
 
-// called when "Find Motifs!" on anschutz tab button is pressed
+// called when "Find Motifs!" on anschutz tab button is pressed -- canonical
 function findMotifs() {
   localStorage.setItem("counter", "26");
   console.log("26")
@@ -113,7 +113,7 @@ function modify(seq) {
     return new_seq;
 }
 
-// find and score main motifs
+// find and score main motifs -- canonical
 function search(proteins) {
   //var motifs = ''
   var motifs = 'Motif, &emsp; Position, &emsp; Score \<br>'
@@ -123,10 +123,10 @@ function search(proteins) {
 
   console.log(proteins)
 
-  for (var i = 0, _pj_a = proteins.length-5; i < _pj_a; i += 1) {
+  for (var i = 0, _pj_a = proteins.length-6; i < _pj_a; i += 1) {
 
     // if a motif is found
-    if (proteins[i] == 'R' && proteins[i+5] == 'G'){
+    if (proteins[i] == 'R' && proteins[i+5] == 'G' && proteins[i+6] != 'P'){
 
       thisMotif = proteins.substring(i, i+8);
       thisScore = getScore(thisMotif); 
