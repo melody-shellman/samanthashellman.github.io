@@ -47,37 +47,27 @@ function extendedSearch(){
 
   for (var i = 0, _pj_a = proteins.length-6; i < _pj_a; i += 1) {
 
-    if (i == proteins.length - 8){
-      //last seven
+    if (proteins[i] == 'R' && proteins[i+8] == 'G'){
 
-      if (proteins[i] == 'R' && (proteins[i+6] == 'G' || proteins[i+7] == 'G')){
+      thisMotif = proteins.substring(i, i+11);
 
-        thisMotif = proteins.substring(i, i+8);
-  
-        realIndex = i + 1
-        
-        motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
-  
-      };
+      realIndex = i + 1
+      
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
 
     }
 
-    else if (i == proteins.length - 7){
-      // last six
+    else if (proteins[i] == 'R' && proteins[i+7] == 'G'){
 
-      if (proteins[i] == 'R' && proteins[i+6] == 'G'){
+      thisMotif = proteins.substring(i, i+10);
 
-        thisMotif = proteins.substring(i, i+7);
-  
-        realIndex = i + 1
-        
-        motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
-  
-      };
+      realIndex = i + 1
+      
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+
     }
 
-    // if a motif is found
-    else if (proteins[i] == 'R' && (proteins[i+6] == 'G' || proteins[i+7] == 'G' || proteins[i+8] == 'G')){
+    else if (proteins[i] == 'R' && proteins[i+6] == 'G'){
 
       thisMotif = proteins.substring(i, i+9);
 
@@ -86,6 +76,7 @@ function extendedSearch(){
       motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
 
     };
+    
 
   };
 
