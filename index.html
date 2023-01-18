@@ -23,7 +23,8 @@
 
 <p>Input amino acid sequence below:</p>
 <textarea id="proteins" name="proteins" rows="6" cols="100"></textarea> <br> <br>
-<button type="submit" onclick="findMotifs()">Find Motifs!</button>
+<button type="submit" onclick="findMotifs()">Find Canonical Motifs</button>
+<button type="submit" onclick="extendedSearch()">Find Extended Motifs!</button>
 <button type="submit" onclick="clearText()">Clear</button>
 
 <p id="canonical"></p>
@@ -36,15 +37,6 @@
 <button type="submit" onclick="clearText2()">Clear</button>
 
 <p id="score"></p>
-
-<br> <br> 
-
-<h4>Extended search function - find motifs with 5, 6, or 7 amino acids separating R and G</h3>
-<p>Input amino acid sequence below:</p>
-<textarea id="extended" name="extended" rows="6" cols="100"></textarea> <br> <br>
-<button type="submit" onclick="extendedSearch()">Find extended motifs!</button>
-<button type="submit" onclick="clearText3()">Clear</button>
-<p id="extendedOutput"></p>
 
 <br> <br> <br> <br>
 
@@ -77,6 +69,15 @@
 <textarea id="proteins" name="proteins" rows="6" cols="100"></textarea> <br> <br>
 <button type="submit">Find Motifs!</button>
 
+
+<br> <br> 
+
+<h4>Extended search function - find motifs with 5, 6, or 7 amino acids separating R and G</h3>
+<p>Input amino acid sequence below:</p>
+<textarea id="extended" name="extended" rows="6" cols="100"></textarea> <br> <br>
+<button type="submit" onclick="extendedSearch()">Find extended motifs!</button>
+<button type="submit" onclick="clearText3()">Clear</button>
+<p id="extendedOutput"></p>
 
 </body>
 </html>

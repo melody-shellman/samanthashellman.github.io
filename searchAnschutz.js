@@ -39,7 +39,7 @@ function clearText2() {
 
 // called when extended search button is clicked
 function extendedSearch(){
-  seq = document.getElementById("extended").value
+  seq = document.getElementById("proteins").value
   proteins = modify(seq)
 
 
@@ -80,7 +80,7 @@ function extendedSearch(){
 
   };
 
-  document.getElementById("extendedOutput").innerHTML = motifs;
+  document.getElementById("canonical").innerHTML = motifs;
 
 }
 
