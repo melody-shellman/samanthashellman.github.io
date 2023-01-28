@@ -3,7 +3,7 @@
 localStorage.setItem("counter", "24");
 
 
-// called when "Find Motifs!" on anschutz tab button is pressed -- canonical
+// called when "Find Canonical Motifs" on anschutz tab button is pressed 
 function findMotifs() {
   localStorage.setItem("counter", "26");
   console.log("26")
@@ -13,7 +13,7 @@ function findMotifs() {
   document.getElementById("canonical").innerHTML = results;
 }
 
-// clears text and results from first text box
+// clears text and results from text box
 function clearText() {
   document.getElementById("canonical").innerHTML = '';
   document.getElementById("proteins").value = '';
@@ -31,7 +31,7 @@ function scoreMotifs(){
   
 }
 
-// clears text and results from second text box
+// clears text and results from scoring text box
 function clearText2() {
   document.getElementById("score").innerHTML = '';
   document.getElementById("8proteins").value = '';
@@ -50,10 +50,12 @@ function extendedSearch(){
     if (proteins[i] == 'R' && proteins[i+8] == 'G'){
 
       thisMotif = proteins.substring(i, i+11);
+      
+      score = extendedScoring(thisMotif)
 
       realIndex = i + 1
       
-      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + ', &emsp;' + score + '\<br>';
 
     }
 
@@ -61,9 +63,11 @@ function extendedSearch(){
 
       thisMotif = proteins.substring(i, i+10);
 
+      score = extendedScoring(thisMotif)
+
       realIndex = i + 1
       
-      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + ', &emsp;' + score + '\<br>';
 
     }
 
@@ -71,9 +75,11 @@ function extendedSearch(){
 
       thisMotif = proteins.substring(i, i+9);
 
+      score = extendedScoring(thisMotif)
+
       realIndex = i + 1
       
-      motifs = motifs + thisMotif + ', &emsp;' + realIndex + '\<br>';
+      motifs = motifs + thisMotif + ', &emsp;' + realIndex + ', &emsp;' + score + '\<br>';
 
     };
     
@@ -82,6 +88,34 @@ function extendedSearch(){
 
   document.getElementById("canonical").innerHTML = motifs;
 
+}
+
+// extended scoring function
+function extendedScoring(sequence) {
+
+  const myJSON = '{"-2":{"P":0.0510192837,"G":0.187107438,"A":0.0246831956,"V":-0.1377410468,"L":-0.1377410468,"I":-0.1377410468,"M":-0.1377410468,"C":0.0126721763,"S":-0.1377410468,"T":-0.1377410468,"R":-0.1377410468,"K":-0.1377410468,"H":-0.1377410468,"D":-0.1377410468,"E":-0.1377410468,"N":-0.1377410468,"Q":-0.1377410468,"W":-0.1377410468,"F":-0.1377410468,"Y":-0.1377410468},"-1":{"P":-0.1377410468,"G":-0.1377410468,"A":-0.1377410468,"V":0.0190082645,"L":-0.1377410468,"I":0.0104683196,"M":-0.1377410468,"C":0.0099449036,"S":-0.1377410468,"T":-0.1377410468,"R":-0.1377410468,"K":-0.1377410468,"H":-0.1377410468,"D":0.1720661157,"E":0.0344077135,"N":-0.1377410468,"Q":0.0163085399,"W":-0.1377410468,"F":-0.1377410468,"Y":0.0132782369},"0":{"P":-0.1377410468,"G":0.2754820937,"A":-0.1377410468,"V":-0.1377410468,"L":-0.1377410468,"I":-0.1377410468,"M":-0.1377410468,"C":-0.1377410468,"S":-0.1377410468,"T":-0.1377410468,"R":-0.1377410468,"K":-0.1377410468,"H":-0.1377410468,"D":-0.1377410468,"E":-0.1377410468,"N":-0.1377410468,"Q":-0.1377410468,"W":-0.1377410468,"F":-0.1377410468,"Y":-0.1377410468},"1":{"P":-0.1377410468,"G":0.0087603306,"A":0.019862259,"V":0.0084022039,"L":0.005922865,"I":0.0110192837,"M":0.0143801653,"C":0.0298071625,"S":0.016446281,"T":0.0151239669,"R":0.008292011,"K":0.0084848485,"H":0.0133333333,"D":0.0224793388,"E":0.0324517906,"N":0.014600551,"Q":0.0210192837,"W":0.0081267218,"F":0.0093939394,"Y":0.0075482094},"2":{"P":0.012892562,"G":0.0087603306,"A":0.0185674931,"V":0.0103030303,"L":0.0070247934,"I":0.0080165289,"M":0.0092837466,"C":0.0132506887,"S":0.0132506887,"T":0.008292011,"R":0.0028099174,"K":0.0024793388,"H":0.0085950413,"D":0.0515702479,"E":0.0580165289,"N":0.0125344353,"Q":0.0071349862,"W":0.0050413223,"F":0.0074931129,"Y":0.0100826446}}'
+  const scoreSheet = JSON.parse(myJSON);
+  var gIndex = 0;
+
+  for (var i = 6, _pj_a = 9; i < _pj_a; i += 1){
+    if (sequence[i] == 'G'){
+      gIndex = i;
+    }
+  }
+
+  totalScore = 0;
+  var offset = -2;
+
+  while (offset < 3){
+    currentChar = thisMotif.charAt(gIndex + offset);
+    
+    totalScore += scoreSheet[offset.toString()][currentChar];
+    console.log(scoreSheet[offset.toString()][currentChar]);
+    offset += 1;
+  }
+
+
+  return totalScore;
 }
 
 // clears extended search output
