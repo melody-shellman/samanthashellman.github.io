@@ -11,8 +11,8 @@ function findAndScoreMotifs() {
 
 // called when "Find Canonical Motifs" on anschutz tab button is pressed 
 function findMotifs() {
-  localStorage.setItem("counter", "26");
-  console.log("26")
+  //localStorage.setItem("counter", "26");
+  //console.log("26")
   var sequence = document.getElementById("proteins").value;
   cleanedSeq = modify(sequence)
   results = search(cleanedSeq)
