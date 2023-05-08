@@ -8,8 +8,8 @@
 
 
 
-<h1>Motif Search Project</h1>
-<h2>Use this specifically for tankyrase motif rules</h2>
+<h1>Tankyrase Binding Motif (TBM) Search Project</h1>
+<h3>Input single-letter amino acid sequence below:</h3>
 
 <!--
 <h3 id="countDisplay">
@@ -21,13 +21,18 @@
 </h3>
 -->
 
-<p>Input amino acid sequence below:</p>
 <textarea id="proteins" name="proteins" rows="6" cols="100"></textarea> <br> <br>
-<button type="submit" onclick="findMotifs()">Find Canonical Motifs</button>
-<button type="submit" onclick="extendedSearch()">Find Extended Motifs</button>
-<button type="submit" onclick="scoreMotifs()">Score Motif</button>
+<button type="submit" onclick="findAndScoreMotifs()">Find and Score Motifs!</button>
+
+<!-- OLD SEPARATED SCORING BUTTONS
+<button type="submit" onclick="findMotifs()">Find Canonical Motifs</button> <br> <br>
+<button type="submit" onclick="extendedSearch()">Find Extended Motifs</button> <br> <br>
+-->
+
+<button type="submit" onclick="scoreMotifs()">Score any 8-amino-acid sequence</button> <br> <br>
 <button type="submit" onclick="clearText()">Clear</button>
 
+<p id="notice">Note: Scores are a predication and do not replace experimental data.</p>
 <p id="canonical"></p>
 
 <br> <br>

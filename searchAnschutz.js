@@ -1,5 +1,13 @@
 localStorage.setItem("counter", "24");
 
+function findAndScoreMotifs() {
+  var result = "Canonical TBMs: R-x-x-x-x-G-(No Proline)-x: \<br>";
+  result += findMotifs();
+  result += "\<br> \<br> Extended TBMs with 5, 6, or 7 amino acids between R and G: \<br>";
+  result += extendedSearch();
+  document.getElementById("canonical").innerHTML = result;
+}
+
 
 // called when "Find Canonical Motifs" on anschutz tab button is pressed 
 function findMotifs() {
@@ -8,7 +16,8 @@ function findMotifs() {
   var sequence = document.getElementById("proteins").value;
   cleanedSeq = modify(sequence)
   results = search(cleanedSeq)
-  document.getElementById("canonical").innerHTML = results;
+  //document.getElementById("canonical").innerHTML = results;
+  return results;
 }
 
 // clears text and results from text box
@@ -41,7 +50,7 @@ function extendedSearch(){
   proteins = modify(seq)
 
 
-  var motifs = 'Motif, &emsp; Position\<br>'
+  var motifs = 'Motif, &emsp; Position &emsp; Score\<br>'
 
   for (var i = 0, _pj_a = proteins.length-6; i < _pj_a; i += 1) {
 
@@ -84,7 +93,8 @@ function extendedSearch(){
 
   };
 
-  document.getElementById("canonical").innerHTML = motifs;
+  //document.getElementById("canonical").innerHTML = motifs;
+  return motifs;
 
 }
 
