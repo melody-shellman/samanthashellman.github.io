@@ -1,5 +1,3 @@
-//testing edit
-
 localStorage.setItem("counter", "24");
 
 
@@ -21,12 +19,12 @@ function clearText() {
 
 // called when score button is pressed
 function scoreMotifs(){
-  var mot = document.getElementById("8proteins").value;
+  var mot = document.getElementById("proteins").value;
   if (mot.length != 8){
-    document.getElementById("score").innerHTML = "Error- sequence must be 8 characters long";
+    document.getElementById("canonical").innerHTML = "Error- sequence must be 8 characters long";
   }
   else{
-    document.getElementById("score").innerHTML = mot + ' -> score of ' + getScore(mot);
+    document.getElementById("canonical").innerHTML = mot + ' -> score of ' + getScore(mot);
   }
   
 }
